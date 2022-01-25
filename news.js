@@ -12,7 +12,7 @@ xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=
 
 // onload means what to do after the request in being processed or Completed
 xhr.onload = function () {
-    if (this.status == 200) {
+    if (this.status === 200) {
         let json = JSON.parse(this.responseText);
         let articles = json.articles;
         console.log(articles);
