@@ -5,14 +5,14 @@ let xhr = new XMLHttpRequest();
 
 // Instiliazing API variebles
 let country = 'in';
-let APIKEY = '7442b35d87d04e2bae55976a6dd97c66';
+let apikey = '7442b35d87d04e2bae55976a6dd97c66';
 
 // We are making a get request to fetch the news in Json format from the given url 
-xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${APIKEY}`, true);
+xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apikey}`, true);
 
 // onload means what to do after the request in being processed or Completed
 xhr.onload = function () {
-    // if (this.status === 200 || this.status === 426) {
+    if (this.status === 200) {
         let json = JSON.parse(this.responseText);
         let articles = json.articles;
         console.log(articles);
@@ -39,9 +39,9 @@ xhr.onload = function () {
         let newsdiv = document.getElementById('newsdiv');
         newsdiv.innerHTML = news;
 
-    // } else {
-    //     console.log('Some Error occurred');
-    // }
+    } else {
+        console.log('Some Error occurred');
+    }
 }
 
 // We have to send the request to get the response and the result of our above code 
